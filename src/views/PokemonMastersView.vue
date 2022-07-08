@@ -35,13 +35,13 @@ onMounted(async () => {
     <div class="title-container">
       <h1>Pokém Masters</h1>
     </div>
-  </div>
-  <div class="list-container">
+    <div class="list-container">
       <div v-for="master in pokemonMasters" class="card">
         <img :src="master.pokemons[0].image" alt="first pokémon">
         <h1>{{ master.name }}</h1>
       </div>
     </div>
+  </div>
 </template>
 
 <style scoped>
@@ -51,6 +51,8 @@ onMounted(async () => {
 }
 .list-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   margin-top: 1rem;
 }

@@ -13,10 +13,14 @@ import PokemonCardVue from '../components/PokemonCard.vue'
 import WildPokemonVue from '../components/WildPokemon.vue'
 import MyPokemonVue from '../components/MyPokemon.vue'
 import PlayerViewVue from '../components/PlayerView.vue'
+import pokemonBattleMusic from '../assets/pokemonBattleMusic.mp3'
+import VolumeUp from '../assets/volumeUp.svg'
+import VolumeOff from '../assets/volumeOff.svg'
 
 const auth = getAuth()
 const firestore = getFirestore()
 const loading = ref(true)
+const playSound = ref(true)
 const pokemons = ref([])
 const myPokemons = ref([])
 const pokemonMaster = ref()
@@ -25,6 +29,8 @@ const wildPokemon = ref()
 const myCurrentPokemon = ref()
 const info = ref('')
 const gameInfo = ref('Explore the wild to find pokémons')
+const battleMusic = new Audio(pokemonBattleMusic)
+battleMusic.volume = 0.1
 
 const bulbasaur = {
   name: 'Bulbasaur',
@@ -146,7 +152,6 @@ const handleCapture = () => {
     info.value = ''
     gameStarted.value = false
     myPokemons.value.push(wildPokemon.value)
-    // if(myPokemons.value)
     gameInfo.value = `You have captured ${wildPokemon.value.name}!`
     
   } else {
@@ -171,6 +176,7 @@ const handleFight = (move) => {
           info.value = `${myCurrentPokemon.value.name} used ${move.name}, ${wildPokemon.value.name} fainted!`
           handleHealPokemons()
           gameStarted.value = false
+          gameInfo.value = `${wildPokemon.value.name} fainted!`
         } else {
           wildPokemon.value.currentHp = newCurrentHp
           info.value = `${myCurrentPokemon.value.name} used ${move.name}!`
@@ -190,6 +196,8 @@ const handleFight = (move) => {
 const handlePokemon = (index) => {
   myCurrentPokemon.value = myPokemons.value[index]
   info.value = `Go! ${myCurrentPokemon.value.name}!`
+
+  if(wildPokemon.value.speed > myCurrentPokemon.value.speed) handleWildPokemonAttack()
 }
 
 const verifyPokemonsMaster = () => {
@@ -201,6 +209,20 @@ const verifyPokemonsMaster = () => {
 
   return false
 }
+
+watch([gameStarted, playSound], () => {
+  if(!playSound.value) {
+    battleMusic.pause()
+    battleMusic.currentTime = 0
+    return
+  }
+
+  if(gameStarted.value) battleMusic.play()
+  else {
+    battleMusic.pause()
+    battleMusic.currentTime = 0
+  }
+})
 
 watch(myPokemons, () => {
   if(loading.value) return
@@ -227,6 +249,14 @@ watch(myPokemons, () => {
 
 <template>
   <div v-if="!loading" class="content">
+    <div class="volume-row">
+      <button v-if="playSound" @click="playSound = false">
+        <img :src="VolumeUp" alt="Volume Up">
+      </button>
+      <button v-else @click="playSound = true">
+        <img :src="VolumeOff" alt="Volume Off">
+      </button>
+    </div>
     <div v-if="!myPokemons.length">
       <div class="title-container">
         <h1>Start your journey!</h1>
@@ -263,6 +293,7 @@ watch(myPokemons, () => {
           :info="info"
           :my-current-pokemon="myCurrentPokemon"
           :my-pokemons="myPokemons"
+          :play-sound="playSound"
           @fight="handleFight"
           @capture="handleCapture"
           @pokemon="handlePokemon"
@@ -274,6 +305,23 @@ watch(myPokemons, () => {
 </template>
 
 <style scoped>
+.volume-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  margin-bottom: -2rem;
+}
+.volume-row button {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.volume-row img {
+  width: 2rem;
+  height: 2rem;
+}
 .title-container {
   display: flex;
   justify-content: center;

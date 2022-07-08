@@ -1,15 +1,19 @@
 <script setup>
 import { computed } from '@vue/reactivity'
 import { ref } from 'vue'
+import pokemonClick from '../assets/pokemonClick.mp3'
 
 const props = defineProps({
   info: String,
   myPokemons: Array,
   myCurrentPokemon: Object,
+  playSound: Boolean,
 })
 
 const emit = defineEmits(['fight', 'capture', 'pokemon', 'run'])
 
+const clickSound = new Audio(pokemonClick)
+clickSound.volume = 0.5
 const optionMenu = ref(true)
 const fightMenu = ref(false)
 const pokemonMenu = ref(false)
@@ -25,34 +29,41 @@ const verifyChoosePokemon = (pokemon) => {
 }
 
 const handleFight = () => {
+  if(props.playSound) clickSound.play()
   optionMenu.value = false
   fightMenu.value = true
 }
 
 const handleCapture = () => {
+  if(props.playSound) clickSound.play()
   emit('capture')
 }
 
 const handlePokemon = () => {
+  if(props.playSound) clickSound.play()
   optionMenu.value = false
   pokemonMenu.value = true
 }
 
 const handleRun = () => {
+  if(props.playSound) clickSound.play()
   emit('run')
 }
 
 const handleMove = (move) => {
+  if(props.playSound) clickSound.play()
   emit('fight', move)
   handleGoBack()
 }
 
 const handleChoosePokemon = (index) => {
+  if(props.playSound) clickSound.play()
   emit('pokemon', index)
   handleGoBack()
 }
 
 const handleGoBack = () => {
+  if(props.playSound) clickSound.play()
   optionMenu.value = true
   fightMenu.value = false
   pokemonMenu.value = false
