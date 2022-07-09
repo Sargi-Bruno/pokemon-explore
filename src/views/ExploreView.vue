@@ -121,7 +121,7 @@ const handleHealPokemons = () => {
 
 const handleExplore = () => {
   const i = Math.floor(Math.random() * 10)
-  wildPokemon.value = pokemons.value[i]
+  wildPokemon.value = {...pokemons.value[i]}
   myCurrentPokemon.value = myPokemons.value[0]
 
   handleHealPokemons()
