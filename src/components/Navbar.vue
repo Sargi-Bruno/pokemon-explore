@@ -26,12 +26,12 @@ onMounted(() => {
 
 <template>
   <div class="nav-bar">
-    <div class="content">
-      <div class="title-container">
-        <h1>
-          Pokémon Explore
-        </h1>
-      </div>
+    <div class="title-container">
+      <h1>
+        Pokémon Explore
+      </h1>
+    </div>
+    <div class="nav-container-background">
       <div class="nav-container">
         <RouterLink
           v-if="isLoggedIn === false"
@@ -76,14 +76,29 @@ onMounted(() => {
   box-shadow: 0 10px 10px rgb(0 0 0 / 12%);
   margin-bottom: 1rem;
 }
+.title-container {
+  width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+}
 .title-container h1 {
   font-size: 36px;
   margin-top: 0;
   padding-top: 1rem;
   color: var(--dark-gray);
 }
+.nav-container-background {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  background-color: var(--dark-gray);
+}
 .nav-container {
   display: flex;
+  align-items: center;
+  width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 .link {
   font-size: 20px;
