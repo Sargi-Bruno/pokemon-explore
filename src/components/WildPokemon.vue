@@ -1,12 +1,9 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-import { ref } from 'vue'
 
 const props = defineProps({
   pokemon: Object
 })
-
-const test = ref('50%')
 
 const currentHpPercentage = computed(() => {
   const result = Math.floor((props.pokemon.currentHp / props.pokemon.hp) * 100)

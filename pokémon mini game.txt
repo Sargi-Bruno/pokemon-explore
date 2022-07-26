@@ -1,0 +1,32 @@
+Pokemon Mini Game
+
+- Escolher um dos três pokémons iniciais
+- Toda vez que clicar em explorar entra um pokémon para enfrentar
+- No final de cada combate todos os seus pokémons são curados
+- O objetivo do jogo é capturar ao menos um tipo de cada pokémon
+- Possui uma página para ver todos os pokémons do jogo (Pokédex)
+- Possui uma página para ver todos os pokémons que foram capturados
+- Possui login com o google e salva o progresso a partir da conta
+
+Pokémons irão possuir os seguintes status:
+- name
+- hp
+- defense
+- speed
+- evasion
+- moves [name, accuracy, damage]
+
+Combate
+- Ao iniciar o combate o jogador vê o pokémon que apareceu e escolhe qual
+pokémon irá chamar
+- O primeiro a agir é decidido pela velocidade do pokémon
+- Durante o seu turno, o jogador pode atacar, trocar de pokémon, tentar capturar
+o pokémon selvagem, ou fugir do combate
+- O combate acaba quando o pokémon selvagem chegar a 0 de hp, for capturado, ou quando
+todos os pokémons do jogador chegarem a 0 de hp
+- Caso o pokémon do jogador chegue a 0 de hp ele fica incapacitado até o próximo combate
+
+Capturar
+- Entre 100% e 50% (verde) de hp o jogador tem 30% de chance de capturar
+- Entre 20% e 49% (amarelo) de hp o jogador tem 70% de chance de capturar
+- Entre 1% e 19% (vermelho) de hp o jogador tem 95% de chance de capturar 

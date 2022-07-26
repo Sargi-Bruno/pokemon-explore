@@ -1,0 +1,131 @@
+Pokémon List
+
+Bulbasaur
+- hp: 21
+- defense: 6
+- speed: 11
+- evasion: 10
+- moves
+  - Cut
+    - accuracy: 90
+    - damage: 8
+  - Razor Wind
+    - accuracy 80
+    - damage: 13
+
+Charmander
+- hp: 19
+- defense: 4
+- speed: 15
+- evasion: 15
+- moves
+  - Mega Punch
+    - accuracy: 90
+    - damage: 12
+  - Fire Punch
+    - accuracy 70
+    - damage: 20
+
+Squirtle
+- hp: 26
+- defense: 8
+- speed: 7
+- evasion: 10
+- moves
+  - Bite
+    - accuracy: 100
+    - damage: 8
+  - Water Gun
+    - accuracy 90
+    - damage: 13
+
+Pidgey
+- hp: 12
+- defense: 4
+- speed: 30
+- evasion: 20
+- moves
+  - Sky Attack
+    - accuracy: 90
+    - damage: 8
+  - Wing Attack
+    - accuracy 80
+    - damage: 11
+
+Rattata
+- hp: 14
+- defense: 5
+- speed: 20
+- evasion: 15
+- moves
+  - Cut
+    - accuracy: 90
+    - damage: 9
+  - Headbutt
+    - accuracy 70
+    - damage: 12
+
+Metapod
+- hp: 20
+- defense: 10
+- speed: 0
+- evasion: 0
+- moves
+  - Bug Bite
+    - accuracy: 80
+    - damage: 8
+  - String Shot
+    - accuracy 60
+    - damage: 12
+
+Spearow
+- hp: 15
+- defense: 4
+- speed: 28
+- evasion: 10
+- moves
+  - Fury Attack
+    - accuracy: 100
+    - damage: 7
+  - Whirlwind
+    - accuracy 80
+    - damage: 13
+
+Weedle
+- hp: 15
+- defense: 4
+- speed: 10
+- evasion: 5
+- moves
+  - Bug Bite
+    - accuracy: 90
+    - damage: 8
+  - Poison String
+    - accuracy 80
+    - damage: 15
+
+Butterfree
+- hp: 12
+- defense: 5
+- speed: 25
+- evasion: 15
+- moves
+  - Razor Wind
+    - accuracy: 90
+    - damage: 10
+  - Whirlwind
+    - accuracy 80
+    - damage: 13
+
+Pikachu
+- hp: 24
+- defense: 5
+- speed: 18
+- evasion: 15
+- moves
+  - Thunder Punch
+    - accuracy: 90
+    - damage: 12
+  - Thunder Shock
+    - accuracy 100
+    - damage: 17
